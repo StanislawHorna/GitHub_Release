@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Create GitHub Release
+      - name: Check GitHub Release
         uses: StanislawHornaGitHub/GitHub_Release/check-release@main
         with:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
