@@ -23,7 +23,9 @@ runs:
       id: base-ver
       shell: pwsh
       run: |
-        $WeekNum = Get-Date -UFormat "%V"
+        $culture = [reflection.assembly]::LoadWithPartialName("System.Globalization")
+        $culture = [System.Globalization.CultureInfo]::CurrentCulture
+        $WeekNum = $culture.Calendar.GetWeekOfYear($date, [System.Globalization.CalendarWeekRule]::FirstFourDayWeek, [DayOfWeek]::Monday)
         $Year = $(Get-Date).ToString("yy")
         $null = [System.Version]"$Year.$WeekNum.0"
         Add-Content -Path $env:GITHUB_OUTPUT -Value "base_version=$Year.$WeekNum"
