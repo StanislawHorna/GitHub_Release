@@ -1,0 +1,34 @@
+name: Create GitHub Release
+description: >
+  Checks if specified git tag and GitHub Release exists.
+  If it does not exist action fails.
+
+inputs:
+  GH_TOKEN:
+    description: "GitHub token"
+    required: true
+  release_tag:
+    description: "Release tag"
+    default: ""
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check git tag existence
+      shell: pwsh
+      run: |
+        $null = Invoke-WebRequest -ErrorActionPreference Stop -Headers @{
+            "Accept"               = "application/vnd.github+json"
+            "Authorization"        = "Bearer ${{ inputs.GH_TOKEN }}"
+            "X-GitHub-Api-Version" = "2022-11-28"
+        } -Uri "https://api.github.com/repos/${{ github.repository }}/git/ref/tags/${{ inputs.release_tag }}" 
+
+    - name: Check GitHub Release existence
+      shell: pwsh
+      run: |
+        $null = Invoke-WebRequest -ErrorActionPreference Stop -Headers @{
+            "Accept"               = "application/vnd.github+json"
+            "Authorization"        = "Bearer ${{ inputs.GH_TOKEN }}"
+            "X-GitHub-Api-Version" = "2022-11-28"
+        } -Uri "https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ inputs.release_tag }}" 

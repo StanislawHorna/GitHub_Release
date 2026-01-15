@@ -7,3 +7,4 @@ These actions help standardize and streamline the GitHub release process in CI/C
 
 - 📦 [create-release](/create-release/)
 - 🔖 [get-release-tag](/get-release-tag/)
+- ✅ [check-release](/check-release/)
