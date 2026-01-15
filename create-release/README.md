@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Create GitHub Release
-        uses: StanislawHornaGitHub/GitHub_Release/create-release@main
+        uses: StanislawHorna/GitHub_Release/create-release@main
         with:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```

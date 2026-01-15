@@ -39,7 +39,7 @@ jobs:
     steps:
       - name: Get Next Release Tag
         id: version
-        uses: StanislawHornaGitHub/GitHub_Release/get-release-tag@main
+        uses: StanislawHorna/GitHub_Release/get-release-tag@main
         with:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

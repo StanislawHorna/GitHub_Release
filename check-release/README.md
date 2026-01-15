@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Check GitHub Release
-        uses: StanislawHornaGitHub/GitHub_Release/check-release@main
+        uses: StanislawHorna/GitHub_Release/check-release@main
         with:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           release_tag: '1.0.0'
